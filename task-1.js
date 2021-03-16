@@ -14,3 +14,17 @@ Array.prototype.myFilter = function (callbackFunc, addParam) {
     }
     return result;
 };
+
+
+const createDebounceFunction = (func, delayTime) => {
+
+    let timeoutID = null;
+
+    return () => {
+        if (timeoutID !== null) {
+            delayTime = timeoutID._idleTimeout;
+            clearTimeout(timeoutID);
+        }
+        timeoutID = setTimeout(func, delayTime);
+    };
+};
